@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRAL VIDEO AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+
+        .glow {
+            text-shadow: 0px 0px 10px #3b82f6, 0px 0px 20px #3b82f6;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn {
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .progress-bar {
+            animation: progressAnimation 5s ease-in-out infinite;
+        }
+
+        @keyframes progressAnimation {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-300 flex flex-col min-h-screen">
+    <header class="w-full bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg py-6 px-8 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl glow font-bold">VIRAL VIDEO AI</h1>
+            <nav>
+                <button class="bg-blue-500 px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition">Login</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-1 container mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <h2 class="text-4xl glow font-bold mb-4">Create Ultra-Realistic Videos from Your Imagination</h2>
+            <p class="text-lg text-gray-400 mb-8">Turn any text prompt or image into viral-worthy videos using advanced AI!</p>
+            <button class="btn bg-blue-500 py-3 px-6 rounded-lg shadow-lg text-white font-bold glow hover:bg-blue-600" id="generate-btn">Generate Viral
+                Video</button>
+        </section>
+
+        <!-- Text to Video -->
+        <section id="text-to-video" class="card rounded-lg p-8 mb-8 hidden">
+            <h3 class="text-2xl font-semibold glow mb-4">Text to Video Generation</h3>
+            <textarea id="text-prompt" class="w-full p-4 rounded-lg bg-gray-800 text-gray-300 border-2 border-gray-600 focus:border-blue-500 transition" rows="3" placeholder="Enter your creative prompt..."></textarea>
+            <div class="mt-4">
+                <button id="generate-video" class="btn bg-purple-500 py-3 px-8 rounded-lg shadow-lg text-white font-bold hover:bg-purple-600">Generate Video</button>
+            </div>
+        </section>
+
+        <!-- Loading Animation -->
+        <section id="loading-section" class="mt-12 hidden text-center">
+            <p class="mb-4 glow font-semibold text-xl">Generating your video, please wait...</p>
+            <div class="w-full bg-gray-700 rounded overflow-hidden h-4">
+                <div class="bg-purple-500 h-4 progress-bar"></div>
+            </div>
+        </section>
+
+        <!-- Generated Video Section -->
+        <section id="video-preview" class="rounded-lg mt-12 hidden">
+            <div class="card px-6 py-8">
+                <div class="text-center glow font-semibold mb-6">Your Generated Video Preview</div>
+                <div class="aspect-w-16 aspect-h-9 bg-black mb-4"></div>
+                <div class="flex justify-center space-x-4">
+                    <button class="btn bg-green-500 py-3 px-8 rounded-lg text-white font-semibold hover:bg-green-600">Download</button>
+                    <button class="btn bg-blue-500 py-3 px-8 rounded-lg text-white font-semibold hover:bg-blue-600">Share</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-6 text-gray-500">
+        <div class="text-center">
+            &copy; 2023 VIRAL VIDEO AI. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        const generateBtn = document.getElementById("generate-btn");
+        const textToVideoSection = document.getElementById("text-to-video");
+        const loadingSection = document.getElementById("loading-section");
+        const videoPreview = document.getElementById("video-preview");
+        const generateVideoBtn = document.getElementById("generate-video");
+
+        generateBtn.addEventListener("click", () => {
+            textToVideoSection.classList.remove("hidden");
+            textToVideoSection.classList.add("fade-in");
+        });
+
+        generateVideoBtn.addEventListener("click", () => {
+            const prompt = document.getElementById("text-prompt").value;
+            if (!prompt) {
+                alert("Please enter a prompt!");
+                return;
+            }
+
+            // Simulate video generation process
+            textToVideoSection.classList.add("hidden");
+            loadingSection.classList.remove("hidden");
+            setTimeout(() => {
+                loadingSection.classList.add("hidden");
+                videoPreview.classList.remove("hidden");
+                videoPreview.classList.add("fade-in");
+            }, 5000); // Fake 5s loading process
+        });
+    </script>
+</body>
+
+</html>
+```
